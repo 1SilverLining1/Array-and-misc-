@@ -1,0 +1,70 @@
+//https://leetcode.com/problems/median-of-two-sorted-arrays/
+// Time compleixity -> O ( n + m ) 
+
+typedef long long ll ; 
+class Solution {
+public:
+    
+    
+  
+    double findMedianSortedArrays(vector<int>& v1, vector<int>& v2) {
+        
+        
+        
+       ll n1 = v1.size()  ; 
+       ll n2 = v2.size(); 
+       ll mid =  ( n1 + n2 ) / 2   ;
+        ll flag = 0 ; 
+       if ( ( n1 + n2 ) % 2 == 0 ) 
+            flag = 1 ; 
+        ll  i = 0 , j = 0  , k = 0 , x ;
+        double m1 = 0 , m2 = 0  ; 
+        //cout << mid << " " << flag << " " <<n1 << " " << n2 << endl ; 
+        while ( i < n1 and j  < n2 )
+        {
+            if ( v1 [ i ] < v2 [ j ] )
+            {
+                x = v1 [ i ] ; 
+                i ++ ; 
+            }
+            else 
+            {
+                x = v2 [ j ] ; 
+                j ++ ; 
+            }
+            //cout << k << " " << x << endl ; 
+            if ( k == mid -1 )
+                    m1 = x ; 
+            if ( k == mid  )
+                    m2= x ; 
+            k ++ ; 
+        }
+        
+        while ( i < n1 )
+        {
+            x = v1[ i ] ; 
+            if ( k == mid -1 )
+                    m1 = x ; 
+            if ( k == mid )
+                    m2 = x ; 
+            k ++ ; 
+            i ++ ; 
+        }
+        
+        while ( j < n2 )
+        {
+            x = v2 [ j ] ; 
+            if ( k == mid -1)
+                  m1 = x ; 
+            if ( k == mid )
+                    m2 = x ; 
+            k ++ ; 
+            j ++ ; 
+        }
+        //cout << mid << " " << flag << " " << m1 << " " << m2 << endl ; 
+        if ( flag )
+                return  ( m1 + m2 ) / 2 ;
+       return m2 ; 
+        
+    }
+};
