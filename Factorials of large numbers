@@ -1,0 +1,64 @@
+//https://practice.geeksforgeeks.org/problems/factorials-of-large-numbers/0#comment-4407434426
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll ;
+using namespace  std ; 
+//Silver_lining 
+const ll N = 1e5; 
+
+string multi ( string s1  , string s2 )
+{
+   // cout << s1 << " " << s2 << endl ; 
+    char ans [ N ] ; 
+    string s ; 
+    for ( int i = 0 ; i < N ; i ++ )
+        ans [ i ] = '0' ; 
+    //memset ( ans , '0' , sizeof ( ans ) ) ; 
+    for ( int i = s2.length() - 1 ; i >= 0 ; i --)
+    {
+        int k = s2.length() - i - 1 ; 
+        int carry = 0 ; 
+        for ( int j = s1.length() - 1 ; j >= 0 ; j -- )
+        {
+            int pre = ans [ k ] - '0' ; 
+            int x = s2 [ i ] - '0' ; 
+            int y = s1 [ j ] - '0' ; 
+            int z = ( x *  y )  + carry + pre ; 
+            ans [ k ] = char ( z % 10 + '0' )  ; 
+            carry = z / 10  ; 
+            k ++ ; 
+        }
+        if ( carry )
+            ans [ k ] = char ( carry + '0' ) ; 
+    }
+    
+    int i = N - 1  ; 
+    while ( i>= 0 and ans [ i ] == '0' )
+            i-- ; 
+    while ( i>= 0 )
+    {
+            s += ans [ i ] ; 
+            i -- ;
+    }
+    return s ; 
+} 
+int main() {
+    
+    
+    ll T ; 
+    cin >> T ; 
+    string fac [ 1001 ] ; 
+    fac [ 1 ]  = "1"; 
+    for ( ll i = 2 ; i < 1001 ; i ++ )
+    {
+            string temp = to_string ( i ) ; 
+            fac [ i ]  = multi ( fac [ i - 1 ] , temp  ) ; 
+    }
+    while ( T-- )
+    {
+        ll  n ;
+        cin >> n  ;
+        cout << fac [ n ]  << endl ; 
+    }
+	return 0;
+}
