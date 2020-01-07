@@ -1,0 +1,39 @@
+            for ( int i = 0 ; i < n ; i ++ )
+							{
+								for ( int j = i + 1 ; j < n - i ; j ++ )
+								{
+									if ( arr[ j - 1] < ar [ j ] )
+									{
+										swap ( arr [ j ] , arr [ j - 1 ]  ) ; 
+										swapper = true ; 
+									}
+								}
+								
+								if ( swapped == false ) 
+									break ; 
+							
+							}
+							
+							
+							
+							
+							recursive bubble sort 
+								
+							void bubble sort ( int arr [] , int n )
+							{
+								if ( n ==1 ) 
+									return ; 
+								for ( int i = 1 ; i < n - 1 ; i ++)
+								{
+									if ( arr [ i - 1 ]  > arr [ i ] ) 
+									{
+										swap ( arr [ i - 1 ] , arr [ i ] ) ; 
+									} 
+								}
+								bubblesort ( arr , n - 1 ) ; 
+							}
+			
+		           Time Complexity -> 
+								worst case : O ( n^2 ) 
+								Average case: o (n^2 ) 
+								Best case : O(n) 
