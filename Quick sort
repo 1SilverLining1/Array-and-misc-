@@ -1,0 +1,39 @@
+void quicksort ( int left , int right , int arr[] )
+					{
+									
+					if ( left >= right ) 
+							return ; 
+					int pivot = arr [ right  ] ; 
+					int pivotind = right  ; 
+					
+					for ( int i = right - 1 ; i >= left  ; i -- )
+					{
+										
+							if ( arr [ i  ] > pivot )
+							{
+								int temp = arr [ i ] ; 
+								for ( int j = i  ;  j < pivotind ; j ++ )
+								{
+									arr [ j  ] = arr [ j + 1 ] ; 
+								}
+								arr [ pivotind ] = temp ;
+								pivotind -- ; 
+						      }
+				       }
+				       
+				       
+								 
+						quicksort ( left , pivotind - 1 , arr ) ; 
+						quicksort ( pivotind + 1 , right , arr ) ; 
+				   }
+
+			        **Best case and average case occure when the array is partition into half. 
+					the height of tree become log n ; 
+				** worst case occure when the pivot index is at the end  of start . 
+				
+				Time Complexity -> 
+								worst case : O ( n*n  ) 
+								Average case: o (nlogn ) 
+								Best case : O(nlog n ) 	
+						
+				https://www.youtube.com/watch?v=-qOVVRIZzao
