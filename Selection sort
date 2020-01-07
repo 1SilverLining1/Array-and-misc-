@@ -1,0 +1,21 @@
+
+							for ( int i = 0 ; i < n ; i ++ )
+							{
+							        int ind ; 
+							        int mini = INT_MAX ;
+								for ( int j = i + 1 ; j < n ; j ++ )
+								{
+									if ( arr [ j ] < mini )
+									{
+										mini = arr [ j ] ; 
+										ind = j ; 
+									}
+								}
+								swap ( arr [ j ] , arr [ i ] ) ; 
+							}
+							
+							Time Complexity -> 
+								worst case : O ( n^2 ) 
+								Average case: o (n^2 ) 
+								Best case : O(n^ 2) 
+							Selection sort is used when Swap operation is costly.
