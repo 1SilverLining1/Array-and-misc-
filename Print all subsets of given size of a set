@@ -1,0 +1,51 @@
+//https://www.geeksforgeeks.org/print-subsets-given-size-set/
+
+// " silver_lining ---> After  cloudy days there are beutiful rainbow sunny  days <3 " 
+ 
+ 
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll ; 
+ll const MOD = 1e9 + 7 ; 
+vector < ll > prime ; 
+
+
+
+void PowerSetUtil ( ll arr [] , int curr , int  n , int data [] , int index , int d  )
+{
+	
+	if ( index == d ) 
+	{
+		for ( int i = 0 ; i < d ; i ++ )
+			cout << data [ i ]  << " " ; 
+		cout << endl ; 
+	 	return ; 
+	} 
+	
+	if ( curr >= n ) 
+		return ; 	
+	data [ index ] = arr [ curr ] ; 
+	PowerSetUtil( arr , curr + 1 ,  n , data , index + 1 ,  d ) ; 
+	PowerSetUtil( arr , curr  + 1 , n , data , index ,  d   ) ; 
+	
+}
+void   PowerSet ( ll arr [] , ll n , ll d )
+{
+	int data [  d ] ; 
+	PowerSetUtil ( arr , 0 , n , data , 0 , d ) ; 
+	
+}
+
+int main()
+{
+	
+	ll n , d ; 
+	cin >> n >> d ; 
+	ll arr [ n ] ; 
+	for ( ll i = 0 ;  i < n ; i ++ ) 
+		cin >> arr [ i ] ; 
+	
+	PowerSet ( arr , n , d ) ; 
+	
+}           
+ 
