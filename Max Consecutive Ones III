@@ -1,0 +1,30 @@
+//https://leetcode.com/problems/max-consecutive-ones-iii/
+
+class Solution {
+public:
+    int longestOnes(vector<int>& arr, int k ) {
+        
+        
+        int n = arr.size() , i = 0 , start = 0 , temp = 0 , ans = 0 , sum = 0 ;
+        while ( i < n )
+        {
+            
+            //cout << i << " " << start << " " << temp << " " << ans << " " << sum << endl ; 
+            if ( !arr [ i ] )
+            {
+                   while ( start  < n and temp >= k )
+                    {
+                        if ( !arr [ start ])
+                            temp -- ;
+                        sum -- ; 
+                        start ++ ; 
+                    }
+                   temp ++ ; 
+            }
+            sum ++ ; 
+            i++ ; 
+            ans = max ( ans , sum ) ; 
+        }
+        return ans ; 
+    }
+};
