@@ -1,0 +1,48 @@
+//https://practice.geeksforgeeks.org/problems/overlapping-intervals/0
+
+
+
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll ; 
+int main() {
+    
+    ll t ; 
+    cin >> t ; 
+    while ( t-- )
+    {
+        ll n ; 
+        cin>> n ; 
+        vector < pair  < ll , ll > > v ; 
+        for ( ll i = 0 ; i < n ; i ++ )
+        {
+            ll a , b ; 
+            cin >> a >> b ; 
+            v.push_back ( { a , b } ) ; 
+        }
+        
+        sort ( v.begin() , v.end() ) ; 
+        /*for ( auto i : v )
+            cout << i .first << " " << i.second << endl ; 
+     cout << "******" << endl ; */
+    
+    ll  a = v [ 0 ] .first , b = v [ 0 ] .second ; 
+    for ( ll i = 1 ; i < v.size() ; i ++ )
+    {
+        if ( v [ i ] .first <= b )
+        {
+            b = max ( b , v [ i ] .second ) ; 
+        }
+        else 
+        {
+            cout << a << " "  << b  << " " ; 
+            a = v [ i ] .first ; 
+            b = v [ i ] .second ; 
+        }
+    }
+   cout << a << " " << b << endl ; 
+   // cout << "&&&&&&" << endl ; 
+    }
+	//code
+	return 0;
+}
