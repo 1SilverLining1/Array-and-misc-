@@ -1,0 +1,49 @@
+//https://leetcode.com/problems/sort-colors/
+
+class Solution {
+public:
+    void sortColors(vector<int>& arr) {
+        
+        
+        int right = arr.size() - 1 ;  
+        int left = 0 ; 
+        
+        while ( right >=0 and arr [ right ] == 2 )
+                right -- ; 
+        while ( left < right and arr [ left ] == 0 )
+                left ++ ; 
+        
+        int i = left ;
+        
+        while ( i <= right )
+        { 
+           
+             
+            if ( arr [ i ] == 1 )
+            {
+                 i ++ ; 
+                 continue ;
+            }
+                     
+            if ( arr [ i ] == 0 )
+            {
+                swap ( arr [ i ] , arr [ left ] ) ; 
+                left ++ ; 
+                
+            }
+            else 
+            {
+                swap ( arr [ i ] , arr [ right ] ); 
+                right -- ; 
+            }
+            while ( right >= left and arr [ right ] == 2 )
+                    right -- ;
+            while ( left <= right and arr [ left ] == 0 )
+                    left ++ ; 
+            if ( i < left )
+                    i = left ; 
+            
+            
+        }
+    }
+};
