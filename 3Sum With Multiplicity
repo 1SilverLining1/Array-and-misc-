@@ -1,0 +1,57 @@
+//https://leetcode.com/problems/3sum-with-multiplicity/
+class Solution {
+public:
+    
+    const int MOD = 1e9 + 7 ; 
+    int threeSumMulti(vector<int>& arr, int sum) {
+        
+       
+        int ans = 0 ; 
+        int n = arr.size() ; 
+         sort ( arr . begin() , arr .end() ) ; 
+         for ( int i = 0 ; i < n ; i ++ )
+         {
+             int req = sum - arr [ i ] ; 
+             int left = i + 1 ; 
+             int right = n - 1 ; 
+             while ( left < right )
+             {
+                 if ( arr [ left ] + arr [ right ] < req )
+                        left ++ ; 
+                 else if ( arr [ left ] + arr [ right ]  > req )
+                        right -- ; 
+                 else if ( arr [ left ] != arr [ right ] )
+                 {
+                     int c1 = 0 ;
+                     int temp = arr [ left ] ; 
+                     while ( arr [ left ] == temp )
+                     {
+                         left ++ ; 
+                         c1++ ; 
+                     }
+                     
+                     int c2 = 0 ;
+                     temp = arr [ right ] ; 
+                     while ( arr [ right ] == temp )
+                     {
+                         right --; 
+                         c2++ ; 
+                     }
+                     
+                     ans = ( ans % MOD + ( ( c1 % MOD) * ( c2 % MOD)  ) % MOD ) ; 
+                    // cout << c1 << " " << c2 << "***" << ans << endl  ;
+                     
+                 }
+                 else 
+                 {
+                     int m = right - left + 1 ; 
+                     ans = ( ans % MOD + ( ( ( m % MOD )  * ( ( m - 1 ) % MOD )   ) % MOD) / 2   )  ;
+                    // cout << m << " " << ans << "&&&&" << endl ; 
+                     break ; 
+                 }
+             }
+         }
+        
+        return ans ; 
+    }
+};
